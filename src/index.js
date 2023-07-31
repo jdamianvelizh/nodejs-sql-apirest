@@ -7,6 +7,10 @@ import indexrRoutes from './routes/index.routes.js'
 //Creacion de una constante para utilizar Express
 const app = express()
 
+
+//Se convertiran los datos en formato JSON 
+app.use(express.json())
+
 //Utilizamos las rutas creadas en la carpeta routes
 app.use(indexrRoutes)
 app.use(empleadosRoutes)

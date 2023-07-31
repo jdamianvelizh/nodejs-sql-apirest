@@ -8,3 +8,11 @@ CREATE TABLE empleados(
     salary INT(5) DEFAULT NULL,
     PRIMARY KEY (id)
 )
+
+DESCRIBE empelados
+
+INSERT INTO empleados VALUES 
+(1, 'Joue', 1000),
+(2, 'Henrry', 2000),
+(3, 'Sam', 2500),
+(4, 'Max', 1500);
