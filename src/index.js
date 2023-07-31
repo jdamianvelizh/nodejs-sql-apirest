@@ -13,7 +13,7 @@ app.use(express.json())
 
 //Utilizamos las rutas creadas en la carpeta routes
 app.use(indexrRoutes)
-app.use(empleadosRoutes)
+app.use('/api',empleadosRoutes)
 
 
 //Ponemos a escuchar el servidor en el puerto
