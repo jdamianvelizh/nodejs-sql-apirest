@@ -9,7 +9,7 @@ export const getEmpleados = async (req, res) => {
   res.json(rows);
 };
 
-//Controlador para obtener los empleados
+//Controlador para obtener un empleado
 export const getEmpleado = async (req, res) => {
        //Creamos la consulta para traer un empleado
   const [rows] = await pool.query("SELECT * FROM empleados WHERE id = ?", [
@@ -56,4 +56,17 @@ export const deleteEmpleados = async (req, res) => {
 };
 
 //Controlador para actualizar los empleados
-export const updateEmpleados = (req, res) => res.send("Actualizando empleados");
+export const updateEmpleados = async(req, res) => {
+    const {id} = req.params
+    const {name, salary} = req.body
+
+   const [result] = await pool.query("UPDATE empleados SET name = IFNULL(?,name), salary = IFNULL(?,salary) WHERE id = ?",  [name, salary, id]);
+
+    if(result.affectedRows == 0) {
+        return res.status(404).json({message: 'Empleado no encontrado'});
+    }
+
+    const [rows]=await pool.query("SELECT * FROM empleados WHERE id = ?", [id])
+
+    res.json(rows[0])
+};
