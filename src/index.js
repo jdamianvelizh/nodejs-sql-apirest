@@ -14,6 +14,9 @@ app.use(express.json())
 //Utilizamos las rutas creadas en la carpeta routes
 app.use(indexrRoutes)
 app.use('/api',empleadosRoutes)
+app.use((req, res, next) =>{
+    res.status(404).json({message: 'Not found endopoint'});
+})
 
 
 //Ponemos a escuchar el servidor en el puerto
