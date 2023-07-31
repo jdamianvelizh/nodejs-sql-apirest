@@ -18,7 +18,7 @@ router.post('/empleados', createEmpleados)
 router.put('/empleados', updateEmpleados)
 
 //Ruta delete para borrar un empleado
-router.delete('/empleados', deleteEmpleados)
+router.delete('/empleados/:id', deleteEmpleados)
 
 
 export default router
